@@ -24,7 +24,6 @@ def eval_odom(pred, gt, radar=True):
     T_pred, times_pred, seq_lens_pred = get_sequence_poses(pred, seq)
     # get corresponding groundtruth poses
     T_gt, _, seq_lens_gt, crop = get_sequence_poses_gt(gt, seq, dim)
-    T_gt = T_gt[:-1]
 
     RotX180 = yawPitchRollToRot(0, 0, np.pi) # roll 180 deg
     '''
