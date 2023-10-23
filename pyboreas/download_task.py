@@ -8,15 +8,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--root",
-        default="/path/to/data/boreas/",
+        default="/mnt/external_ssd/radar_data/boreas/",
         help="path to where Boreas sequences will be stored",
     )
     parser.add_argument(
         "--task", default="odometry", help="[odometry|localization|detection]"
     )
-    parser.add_argument("--nocamera", action="store_true", default=False)
+    parser.add_argument("--nocamera", action="store_true", default=True)
     parser.add_argument("--noradar", action="store_true", default=False)
-    parser.add_argument("--nolidar", action="store_true", default=False)
+    parser.add_argument("--nolidar", action="store_true", default=True)
     parser.add_argument("--trainonly", action="store_true", default=False)
     args = parser.parse_args()
     print(args)
@@ -44,7 +44,7 @@ if __name__ == "__main__":
             + seq
             + " "
             + seq_root
-            + " --exclude '*' --include 'applanix/*' --include video.mp4 --include route.html "
+            + " --exclude '*' --include 'applanix/*' --include video.mp4 --include calib/* --include route.html --no-sign-request "
         )
         if not args.nocamera:
             command += "--include camera/* "

@@ -387,6 +387,10 @@ def get_path_from_Tvi_list(T_vi_odom, T_vi_gt):
         path_gt (np.ndarray): K x 3 numpy array of groundtruth xyz coordinates
     """
 
+    print("len odom: " + str(len(T_vi_odom)))
+    
+    print("len gt: " + str(len(T_vi_gt)))
+    
     assert len(T_vi_odom) == len(T_vi_gt)  # assume 1:1 correspondence
     T_iv_odom = [np.linalg.inv(T_vk_i_odom) for T_vk_i_odom in T_vi_odom]
 
